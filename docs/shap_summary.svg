@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="420" viewBox="0 0 580 420">
+  <rect width="580" height="420" fill="#1a1a2e"/>
+  <text x="290" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">SHAP Feature Importance — Mean |SHAP Value|</text>
+  <text x="290" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">XGBoost Student Retention Risk Model | Top 8 Features by Impact on Prediction</text>
+  <rect x="185" y="70" width="355" height="296" fill="#16213e" rx="2"/>
+  <line x1="185.0" y1="70" x2="185.0" y2="374.0" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="185.0" y="388.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.00</text>
+  <line x1="273.8" y1="70" x2="273.8" y2="374.0" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="273.8" y="388.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.04</text>
+  <line x1="362.5" y1="70" x2="362.5" y2="374.0" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="362.5" y="388.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.08</text>
+  <line x1="451.3" y1="70" x2="451.3" y2="374.0" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="451.3" y="388.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.12</text>
+  <line x1="540.0" y1="70" x2="540.0" y2="374.0" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="540.0" y="388.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.16</text>
+  
+  <rect x="185" y="70" width="315.1" height="30" fill="#ff9f43" rx="2"/>
+  <text x="177" y="89" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Entry tariff band</text>
+  <text x="506.0625" y="89" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.142</text>
+  <rect x="185" y="108" width="261.8" height="30" fill="#ff9f43" rx="2"/>
+  <text x="177" y="127" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Provider type</text>
+  <text x="452.8125" y="127" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.118</text>
+  <rect x="185" y="146" width="215.2" height="30" fill="#f0a500" rx="2"/>
+  <text x="177" y="165" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Mode of study (PT/FT)</text>
+  <text x="406.21875" y="165" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.097</text>
+  <rect x="185" y="184" width="184.2" height="30" fill="#e07b00" rx="2"/>
+  <text x="177" y="203" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Subject area</text>
+  <text x="375.15625" y="203" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.083</text>
+  <rect x="185" y="222" width="135.3" height="30" fill="#c76d00" rx="2"/>
+  <text x="177" y="241" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Domicile (UK / non-UK)</text>
+  <text x="326.34375" y="241" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.061</text>
+  <rect x="185" y="260" width="108.7" height="30" fill="#a85a00" rx="2"/>
+  <text x="177" y="279" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Qualification aim</text>
+  <text x="299.71875" y="279" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.049</text>
+  <rect x="185" y="298" width="84.3" height="30" fill="#8a4900" rx="2"/>
+  <text x="177" y="317" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Gender</text>
+  <text x="275.3125" y="317" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.038</text>
+  <rect x="185" y="336" width="59.9" height="30" fill="#6d3800" rx="2"/>
+  <text x="177" y="355" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#cccccc">Year of study</text>
+  <text x="250.90625" y="355" font-family="Arial, sans-serif" font-size="11" fill="#aaaaaa">0.027</text>
+  <text x="362.5" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#cccccc">Mean |SHAP value| (impact on model output)</text>
+</svg>
