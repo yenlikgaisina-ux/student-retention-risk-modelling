@@ -11,19 +11,19 @@
 
 ## Overview
 
-Using publicly available HESA (Higher Education Statistics Agency) aggregate data on UK student continuation rates, this project builds a machine learning pipeline to identify the institutional and demographic characteristics most strongly associated with non-continuation risk.
+This project builds a machine learning pipeline to identify the institutional and demographic characteristics most strongly associated with non-continuation risk in UK higher education.
 
-The dataset covers 2,400 cohort-level records drawn from HESA Table 10, representing combinations of provider type, subject area, entry tariff band, mode of study, and year of entry across English higher education providers. The model assigns a risk score to each cohort profile. Approximately 23% of those profiles fall into the high-risk segment, where non-continuation rates reach 18.4% compared to 4.1% in the low-risk group.
+The dataset is a **calibrated synthetic dataset** of 2,400 cohort-level records, with non-continuation rates, demographic proportions, and institutional characteristics drawn from published HESA 2021/22 performance indicator figures. HESA does not make cohort-level microdata (provider x subject x tariff x mode) freely available for download — detailed student records require institutional data-sharing agreements. The synthetic data preserves the statistical relationships reported in HESA's aggregate tables while enabling a complete ML pipeline demonstration.
 
-The model produces risk scores by cohort profile, SHAP-based feature importance, and actionable policy recommendations for student support services.
+The model assigns a risk score to each cohort profile, produces SHAP-based feature importance rankings, and generates actionable policy recommendations for student support services. The methodology is directly transferable to real institutional data (e.g., from SITS student records systems).
 
 ---
 
 ## Methods
 
 | Stage | Technique | Purpose |
-|-------|-----------|---------| 
-| Data preparation | HESA Table 10 continuation rates | Aggregate cohort-level features |
+|-------|-----------|---------|
+| Data preparation | Calibrated synthetic cohorts (HESA-structured) | Aggregate cohort-level features |
 | Feature engineering | Subject area, entry tariff band, mode of study, provider type | Risk factor construction |
 | Baseline model | Logistic Regression | Interpretable benchmark |
 | Main model | XGBoost Classifier | Non-linear risk prediction |
@@ -37,35 +37,25 @@ The model produces risk scores by cohort profile, SHAP-based feature importance,
 
 | Metric | Value |
 |--------|-------|
-| Cohort profiles scored | 2,400 (HESA Table 10, all English HE providers) |
-| XGBoost ROC-AUC | 0.847 |
-| Logistic Regression AUC (baseline) | 0.761 |
-| Improvement over baseline | +11.3% AUC |
+| Cohort profiles scored | 2,400 |
+| XGBoost ROC-AUC | See notebook output |
+| Logistic Regression AUC (baseline) | See notebook output |
 | Top risk factor | Entry tariff band (SHAP rank #1) |
-| High-risk cohort non-continuation rate | 18.4% vs 4.1% low-risk |
-| Students in high-risk segment | ~23% of enrolments |
+| Data calibration basis | HESA 2021/22 published performance indicators |
+
+All specific metrics (AUC scores, F1, improvement percentages, high-risk segment sizes) are computed from the calibrated synthetic data and reported in the notebook.
 
 ---
 
 ## Model Performance
 
-### ROC Curve
-
-![ROC Curve](docs/roc_curve.svg)
-
-*XGBoost (AUC 0.847, orange) substantially outperforms the Logistic Regression baseline (AUC 0.761, blue dashed). The steeper curve in the low false-positive-rate region shows the model is effective at identifying the highest-risk cohorts with minimal over-flagging.*
-
-### SHAP Feature Importance
-
-![SHAP Summary](docs/shap_summary.svg)
-
-*Entry tariff band is the strongest individual predictor of non-continuation risk, followed by provider type and mode of study. SHAP values are computed using TreeExplainer on the held-out validation set and represent the mean absolute impact of each feature on the model's output.*
+The notebook produces ROC curves comparing XGBoost against Logistic Regression baseline, confusion matrices with optimised thresholds, and SHAP feature importance analysis. XGBoost substantially outperforms the Logistic Regression baseline, with entry tariff band as the strongest individual predictor of non-continuation risk.
 
 ---
 
 ## What a University Would Do With This
 
-A student support team with access to this model's cohort risk scores could act before the end of the first term rather than waiting for early withdrawal data to accumulate. The highest-risk profiles — typically part-time students at post-92 providers with low entry tariffs in health and social care subjects — can be flagged for proactive outreach: targeted induction support, peer mentoring referrals, and early academic skills assessments. Because the model operates at cohort level using HESA data, it does not require individual student data sharing agreements, which makes it deployable across institutions. A 1% reduction in non-continuation among the 23% high-risk segment across a mid-size provider of 15,000 students would retain approximately 35 students per year, representing roughly £175,000 in tuition income and avoided recruitment cost.
+A student support team with access to this model's cohort risk scores could act before the end of the first term rather than waiting for early withdrawal data to accumulate. The highest-risk profiles -- typically part-time students at post-92 providers with low entry tariffs -- can be flagged for proactive outreach: targeted induction support, peer mentoring referrals, and early academic skills assessments. Because the model operates at cohort level, it does not require individual student data sharing agreements, which makes it deployable across institutions.
 
 ---
 
@@ -74,12 +64,11 @@ A student support team with access to this model's cohort risk scores could act 
 ```
 student-retention-risk-modelling/
 |-- docs/
-|   |-- roc_curve.svg        (ROC curve: XGBoost AUC 0.847 vs baseline 0.761)
-|   +-- shap_summary.svg     (SHAP feature importance: top 8 drivers)
+|   |-- roc_curve.svg
+|   +-- shap_summary.svg
 |-- notebook/
 |   +-- student_retention_risk_modelling.ipynb
 +-- README.md
-+-- .gitignore
 ```
 
 ---
@@ -94,4 +83,4 @@ student-retention-risk-modelling/
 
 **Yenlik Gaisina** | Data & Analytics Consultant
 
-[LinkedIn](https://linkedin.com/in/yenlikgaisina) | Cambridge Data Science with ML & AI Programme
+[LinkedIn](https://www.linkedin.com/in/yenlik-gaisina/) | Cambridge Data Science with ML & AI Programme
