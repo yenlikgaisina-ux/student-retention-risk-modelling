@@ -33,6 +33,19 @@ The model assigns a risk score to each cohort profile, produces SHAP-based featu
 
 ---
 
+
+## Key Technical Decisions
+
+**Why XGBoost over neural networks?**
+This is a tabular dataset with ~2,400 cohort-level records. XGBoost consistently outperforms deep learning on tabular data at this scale — there is no point adding complexity that doesn't improve results. The 0.847 AUC-ROC confirms this choice was correct, not conservative.
+
+**Why SHAP at the individual prediction level?**
+Academic pastoral teams do not act on cohort-level statistics — they act on individual students. SHAP enables a tutor to understand why *this* cohort profile is flagged at high risk, not just why the model is generally accurate. That granularity is the responsible AI requirement in education contexts, where interventions must be justifiable.
+
+**Why synthetic data calibrated to HESA, not simulated from scratch?**
+Random synthetic data would produce spurious patterns that don't reflect real-world non-continuation rates. Calibrating to HESA 2021/22 published performance indicators ensures the model reflects genuine risk gradients — even though it cannot use individual student records. This is also the honest approach: the methodology section documents exactly what the data is and isn't.
+
+---
 ## Key Findings
 
 | Metric | Value |
@@ -59,6 +72,16 @@ A student support team with access to this model's cohort risk scores could act 
 
 ---
 
+
+## Business Impact
+
+→ **Decision enabled:** A student support team can identify the highest-risk incoming cohort profiles before the end of Week 1 of term — triggering proactive outreach (peer mentoring, early academic skills support) rather than waiting for withdrawal data to accumulate in December.
+
+→ **Time/cost saving:** Each student lost to non-continuation represents approximately £9,000–£11,000 in lost tuition fee revenue (UK 2024 fees) plus regulatory and TEF implications. Identifying and retaining even 5% of the high-risk segment has material financial and mission impact for a typical UK provider with 15,000+ students.
+
+→ **Stakeholder:** Student Experience Directors, Academic Registrars, and pastoral support teams at UK HEIs — particularly post-92 providers where non-continuation rates are highest and resource for intervention is most constrained.
+
+---
 ## Repository Structure
 
 ```
